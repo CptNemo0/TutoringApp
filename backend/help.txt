@@ -8,3 +8,7 @@ migrate -path <path-to-migrations> -database "postgres://<login>:<psswd>@localho
 libraries:
 gin - http server setup
 pgx - db management
+
+
+migrate -path "/db/migrations/  -database "postgres://nemo:test@localhost:5432/tutoring_db?sslmode=disable" up
+docker-compose -f "docker_compose.yml" exec db psql -U nemo -d tutoring_db

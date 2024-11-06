@@ -1,17 +1,12 @@
 package main
 
 import (
-	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
 
-	"backend/config/db_config"
-
 	"github.com/gin-gonic/gin"
-	"github.com/jackc/pgx/v4/pgxpool"
 )
 
 type RequestData struct {
@@ -23,15 +18,9 @@ type RequestData struct {
 func main() {
     log.Print("Starting program")
 
-    log.Print("Loading Config")
+    /*log.Print("Loading Database Config")
     dbConfig := db_config.LoadConfig()
-
-    log.Print(dbConfig.DBHost)
-    log.Print(dbConfig.DBName)
-    log.Print(dbConfig.DBUser)
-    log.Print(dbConfig.DBPassword)
-    log.Print(dbConfig.DBPort)
-
+    
     log.Print("Connecting database")
     dbConnectionStr := fmt.Sprintf("postgres://%s:%s@%s:%s/%s", 
                         dbConfig.DBUser, 
@@ -46,7 +35,8 @@ func main() {
     if err != nil {
         log.Fatalf("unable to connect to database: %v", err)
     }
-    defer dbHandle.Close()
+    defer dbHandle.Close()*/
+
     //qR, err := dbHandle.Query(context.Background() ,"select count(*) from users")
     //if err != nil {
     //  log.Fatalf("Query failed: %v", err)
@@ -56,13 +46,17 @@ func main() {
     //log.Print(a[0])
 
     router := gin.Default()
+    
     router.LoadHTMLGlob("./../frontend/app/build/*.html")
     router.Static("/static", "./../frontend/app/build/static")
-    
+    router.StaticFile("favicon.ico",  "./../frontend/app/build/favicon.ico")
+    router.StaticFile("manifest.json",  "./../frontend/app/build/manifest.json")
+    router.StaticFile("logo192.png",  "./../frontend/app/build/logo192.png")
+
     router.GET("/ping", GetPing)
     router.POST("/ping", PostPing)
 
-    router.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+    router.Run()
 }
 
 func GetPing(c *gin.Context) {
