@@ -1,11 +1,12 @@
-package config
+package db_config
 
 import (
-    "github.com/spf13/viper"
-    "log"
+	"log"
+
+	"github.com/spf13/viper"
 )
 
-type Config struct {
+type DBConfig struct {
     DBHost     string
     DBPort     string
     DBUser     string
@@ -13,14 +14,14 @@ type Config struct {
     DBName     string
 }
 
-func LoadConfig() *Config {
-    viper.SetConfigFile(".env") // or use viper.AddConfigPath() and viper.SetConfigName()
+func LoadConfig() *DBConfig {
+    viper.SetConfigFile("config/db_config/.env")
 
     if err := viper.ReadInConfig(); err != nil {
         log.Fatalf("Error reading config file: %v", err)
     }
 
-    return &Config{
+    return &DBConfig{
         DBHost:     viper.GetString("DB_HOST"),
         DBPort:     viper.GetString("DB_PORT"),
         DBUser:     viper.GetString("DB_USER"),
