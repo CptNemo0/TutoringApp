@@ -1,0 +1,11 @@
+:root {
+    --background-color: #ffffff;
+    --button-color: rgb(50, 118, 212);
+    --button-color-hover: #4887df;
+    --transparent-banner-color: rgba(22, 22, 23, 0.75);
+    --transparent-banner-color: rgba(22, 22, 23);
+    --gray-text-color: rgb(208, 208, 208);
+    --white-text-color: rgb(245, 245, 245);
+    --black-text-color: rgb(0, 0, 0);
+    --blue-text-color: rgb(50, 118, 212);
+  }

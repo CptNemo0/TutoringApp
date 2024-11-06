@@ -9,11 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type RequestData struct {
-  Name     string `json:"name"`
-  Email    string `json:"email"`
-  Password string `json:"password"`
-}
+
 
 func main() {
     log.Print("Starting program")
@@ -64,6 +60,12 @@ func GetPing(c *gin.Context) {
 }
 
 func PostPing(c *gin.Context) {
+  
+  type RequestData struct {
+    Name     string `json:"name"`
+    Email    string `json:"email"`
+    Password string `json:"password"`
+  }
 
   data, err := io.ReadAll(c.Request.Body)
   if err != nil {
