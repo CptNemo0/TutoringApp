@@ -1,0 +1,10 @@
+commands:
+docker-compose -f "docker_compose.yml" up -d                                                                                - turn on
+docker-compose -f "docker_compose.yml" down                                                                                 - turn off
+docker ps 				                                                                                    - container status
+docker-compose -f "docker_compose.yml" exec db psql -U <login> -d tutoring_db                                               - turn on postgresql shell
+migrate -path <path-to-migrations> -database "postgres://<login>:<psswd>@localhost:5432/tutoring_db?sslmode=disable" up     - apply migrations
+
+libraries:
+gin - http server setup
+pgx - db management
