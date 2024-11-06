@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
+    <head>
+    </head>
     <body>
-
         <div style="
             max-width: fit-content;
             margin-left: auto;
             margin-right: auto;
-            font-size: 100px;"
-        >
-            Hello
+            font-size: 50px;">
+            <form action="http://localhost:8080/ping" method="POST">
+                <label for="fname">First name:</label>
+                <input type="text" id="input_name" name="fname"><br>
+                <label for="email">Email:</label>
+                <input type="text" id="input_email" name="femail"><br>
+                <label for="email">Password:</label>
+                <input type="password" id="input_password" name="fpassword"><br>
+            </form>
         </div>
-
+        <button id="submit_button" type="submit">Send Data</button>
+        <script src="/frontend/scripts/hello.js"></script>
     </body>
+
 </html>
